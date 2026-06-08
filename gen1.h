@@ -610,25 +610,25 @@ typedef struct PartyMember {
     // that
     uint32_t experience;
 
-    // Effort Values
+    // Stat Exp
     // These are very specific to the Pokemon and who they battled in the past
     // or what vitamins they were fed Luckily, these get recalculated when you
     // level them up, or when you put them in a box and then put them back in
     // your party For this example, I will take the max value and scale it to
     // the level (65535 * 0.40) = 26214
-    uint16_t HP_ev;
-    uint16_t attack_ev;
-    uint16_t defense_ev;
-    uint16_t speed_ev;
-    uint16_t special_ev;
+    uint16_t HP_exp;
+    uint16_t attack_exp;
+    uint16_t defense_exp;
+    uint16_t speed_exp;
+    uint16_t special_exp;
 
-    // IVs are a 4 bit number, so the max value is 15 (0-15 = 0b0000-0b1111 =
+    // DVs are a 4 bit number, so the max value is 15 (0-15 = 0b0000-0b1111 =
     // 0x0-0xF) These have been broken out for legibility, but will be condensed
     // to only 2 bytes
-    uint8_t attack_iv;
-    uint8_t defense_iv;
-    uint8_t speed_iv;
-    uint8_t special_iv;
+    uint8_t attack_dv;
+    uint8_t defense_dv;
+    uint8_t speed_dv;
+    uint8_t special_dv;
 
     uint8_t move1_pp;
     uint8_t move2_pp;
