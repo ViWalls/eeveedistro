@@ -60,13 +60,13 @@ uint8_t PATCH_BLOCK[PATCH_SIZE];
 uint8_t scheduled_refill = TRUE;
 unsigned char name[11] = {
         // OT Name
-        pokechar_E,
-        pokechar_U,
-        pokechar_R,
-        pokechar_O,
-        pokechar_P,
-        pokechar_E,
-        pokechar_STOP_BYTE,
+        pokechar_V,
+        pokechar_I,
+        pokechar_W,
+        pokechar_A,
+        pokechar_L,
+        pokechar_L,
+        pokechar_S,
         pokechar_STOP_BYTE,
         pokechar_STOP_BYTE,
         pokechar_STOP_BYTE,
@@ -74,11 +74,11 @@ unsigned char name[11] = {
 };
 unsigned char nicknames[11] = {
         // Pokemon Nickname
-        pokechar_M,
         pokechar_E,
-        pokechar_W,
-        pokechar_STOP_BYTE,
-        pokechar_STOP_BYTE,
+        pokechar_E,
+        pokechar_V,
+        pokechar_E,
+        pokechar_E,
         pokechar_STOP_BYTE,
         pokechar_STOP_BYTE,
         pokechar_STOP_BYTE,
@@ -116,18 +116,18 @@ void party_member_to_bytes(struct PartyMember *pPartyMember, uint8_t *out) {
             (uint8_t)((pPartyMember->experience & 0x00FF0000) >> 16),
             (uint8_t)((pPartyMember->experience & 0x0000FF00) >> 8),
             (uint8_t)(pPartyMember->experience & 0x000000FF),
-            (uint8_t)(pPartyMember->HP_ev >> 8),
-            (uint8_t)(pPartyMember->HP_ev & 0x00FF),
-            (uint8_t)(pPartyMember->attack_ev >> 8),
-            (uint8_t)(pPartyMember->attack_ev & 0x00FF),
-            (uint8_t)(pPartyMember->defense_ev >> 8),
-            (uint8_t)(pPartyMember->defense_ev & 0x00FF),
-            (uint8_t)(pPartyMember->speed_ev >> 8),
-            (uint8_t)(pPartyMember->speed_ev & 0x00FF),
-            (uint8_t)(pPartyMember->special_ev >> 8),
-            (uint8_t)(pPartyMember->special_ev & 0x00FF),
-            (uint8_t)(((pPartyMember->attack_iv & 0xF) << 4) | (pPartyMember->defense_iv & 0xF)),
-            (uint8_t)(((pPartyMember->speed_iv & 0xF) << 4) | (pPartyMember->special_iv & 0xF)),
+            (uint8_t)(pPartyMember->HP_exp >> 8),
+            (uint8_t)(pPartyMember->HP_exp & 0x00FF),
+            (uint8_t)(pPartyMember->attack_exp >> 8),
+            (uint8_t)(pPartyMember->attack_exp & 0x00FF),
+            (uint8_t)(pPartyMember->defense_exp >> 8),
+            (uint8_t)(pPartyMember->defense_exp & 0x00FF),
+            (uint8_t)(pPartyMember->speed_exp >> 8),
+            (uint8_t)(pPartyMember->speed_exp & 0x00FF),
+            (uint8_t)(pPartyMember->special_exp >> 8),
+            (uint8_t)(pPartyMember->special_exp & 0x00FF),
+            (uint8_t)(((pPartyMember->attack_dv & 0xF) << 4) | (pPartyMember->defense_dv & 0xF)),
+            (uint8_t)(((pPartyMember->speed_dv & 0xF) << 4) | (pPartyMember->special_dv & 0xF)),
             pPartyMember->move1_pp,
             pPartyMember->move2_pp,
             pPartyMember->move3_pp,
@@ -293,59 +293,43 @@ void fill_pokemon_team(void) {
 
     for (size_t i = 0; i < 6; i++) {
         struct PartyMember *pPartyMember = &traderPacket.pokemon[i];
-        // Mimicking this Mew:
-        // - https://github.com/projectpokemon/EventsGallery/tree/master/Released/Gen%201/Classic/International/2000%20Spanish%20Pok%C3%A9mon%20Championship
-        // - https://projectpokemon.org/home/forums/topic/37431-gen-i-v-event-contributions-thread/?do=findComment&comment=254958
-        // - https://www.math.miami.edu/~jam/azure/forum/tuff/ultimatebb.php?ubb=get_topic;f=6;t=000256
-        // - https://projectpokemon.org/home/forums/topic/56562-uk-mew-from-julyaugust-2000/?do=findComment&comment=254955
-        // - https://projectpokemon.org/home/forums/topic/37431-gen-i-v-event-contributions-thread/?do=findComment&comment=255300
-        //
-        // D-J one is not clear that it was legit, only EUROPE. Notes from Suloku about D-J one (SPANISH):
-        //
-        // El caso es que al final apareció el verdadero mew que repartieron en madrid, OT EUROPE.
-        // Lo tenía un jugador que después de muchos años volvio a pokemon, y ya en la época tenía métodos de backup de
-        // partida en gameboy, incluso estaba registrado en un foro de la época (inglés) donde había mensaje suyos
-        // hablando de ir al torneo etc, todo verificado así que en principio ese mew es el que realmente repartieron.
-        // El mew D-J...sigo pensando que efectivamente rondaba por madrid en el parque de atracciones, pero "repartido"
-        // a base de clonaciones. O quien sabe, puede que alguien cambiara su mew hack al repartidor oficial del evento
-        // y este se lo diera a otro jugador al ver que era un mew.
-
-        pPartyMember->pokemon = MEW;
-        pPartyMember->current_hp = 25;
-        pPartyMember->max_hp = 25;
+       
+        pPartyMember->pokemon = EEVEE;
+        pPartyMember->current_hp = 22;
+        pPartyMember->max_hp = 22;
         pPartyMember->level = 5;
         pPartyMember->status = NONE;
-        pPartyMember->type1 = PSYCHIC_TYPE;
-        pPartyMember->type2 = PSYCHIC_TYPE;
+        pPartyMember->type1 = NORMAL_TYPE;
+        pPartyMember->type2 = NORMAL_TYPE;
         pPartyMember->catch_rate_or_held_item = 45;
-        pPartyMember->move1 = POUND;
-        pPartyMember->move2 = 0x0;
-        pPartyMember->move3 = 0x0;
+        pPartyMember->move1 = TACKLE;
+        pPartyMember->move2 = TAIL_WHIP;
+        pPartyMember->move3 = GROWTH;
         pPartyMember->move4 = 0x0;
         pPartyMember->original_trainer_id = (randw() % 65535) + 1;
 
-        pPartyMember->experience = 135;
+        pPartyMember->experience = 125;
 
-        pPartyMember->HP_ev = 0;
-        pPartyMember->attack_ev = 0;
-        pPartyMember->defense_ev = 0;
-        pPartyMember->speed_ev = 0;
-        pPartyMember->special_ev = 0;
+        pPartyMember->HP_exp = 0;
+        pPartyMember->attack_exp = 0;
+        pPartyMember->defense_exp = 0;
+        pPartyMember->speed_exp = 0;
+        pPartyMember->special_exp = 0;
 
-        pPartyMember->attack_iv = 10;
-        pPartyMember->defense_iv = 1;
-        pPartyMember->speed_iv = 12;
-        pPartyMember->special_iv = 5;
+        pPartyMember->attack_dv = 15;
+        pPartyMember->defense_dv = 15;
+        pPartyMember->speed_dv = 15;
+        pPartyMember->special_Dv = 15;
 
         pPartyMember->move1_pp = 35;
-        pPartyMember->move2_pp = 0;
-        pPartyMember->move3_pp = 0;
+        pPartyMember->move2_pp = 30;
+        pPartyMember->move3_pp = 40;
         pPartyMember->move4_pp = 0;
 
-        pPartyMember->attack = 16;
-        pPartyMember->defense = 15;
-        pPartyMember->speed = 16;
-        pPartyMember->special = 15;
+        pPartyMember->attack = 12;
+        pPartyMember->defense = 11;
+        pPartyMember->speed = 12;
+        pPartyMember->special = 13;
     }
 
     for (size_t i = 0; i < 6; i++) {
@@ -572,9 +556,9 @@ void main(void) {
     font_init();
     font_set(font_load(font_spect));
 
-    puts("\n  MEW DISTRIBUTION");
-    puts("     OT/ EUROPE\n\n\n\n\n\n\n\n\n\n\n\n\n");
-    puts("    2024 Grender");
+    puts("\n  PCNY GROWTH EEVEE DISTRIBUTION");
+    puts("     OT/ VIWALLS\n\n\n\n\n\n\n\n\n\n\n\n\n");
+    puts("    2026 Grender & ViWalls");
 
     // Load Mew tiles starting at position 128.
     set_bkg_data(128, 20, mew_tiles);
