@@ -1,6 +1,6 @@
-CC = $(GBDK_HOME)/bin/lcc -Wa-l -Wl-m -Wl-j -Wm-yn"MEWDISTRO"
+CC = $(GBDK_HOME)/bin/lcc -Wa-l -Wl-m -Wl-j -Wm-yn"EEVEEDISTRO"
 
-BINS	= mewdistro.gb
+BINS	= eeveedistro.gb
 
 all:	$(BINS)
 
