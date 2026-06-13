@@ -303,8 +303,8 @@ void fill_pokemon_team(void) {
         pPartyMember->max_hp = 22;
         pPartyMember->level = 5;
         pPartyMember->status = NONE;
-        pPartyMember->type1 = NORMAL_TYPE;
-        pPartyMember->type2 = NORMAL_TYPE;
+        pPartyMember->type1 = NORMAL;
+        pPartyMember->type2 = NORMAL;
         pPartyMember->catch_rate_or_held_item = 45;
         pPartyMember->move1 = TACKLE;
         pPartyMember->move2 = TAIL_WHIP;
@@ -323,7 +323,7 @@ void fill_pokemon_team(void) {
         pPartyMember->attack_dv = 15;
         pPartyMember->defense_dv = 15;
         pPartyMember->speed_dv = 15;
-        pPartyMember->special_Dv = 15;
+        pPartyMember->special_dv = 15;
 
         pPartyMember->move1_pp = 35;
         pPartyMember->move2_pp = 30;
