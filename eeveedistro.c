@@ -50,8 +50,11 @@ const unsigned char mew_tiles[] = {
 // It has +128 since we are loading Mew sprites starting at position 128
 // to prevent collisions with the font sprites.
 const unsigned char mew_map[] = {
-        0x94, 0x94, 0x94, 0x8b, 0x90, 0x94, 0x83, 0x87, 0x8c, 0x91, 0x80, 0x84, 0x88, 0x8d, 0x92, 0x81, 0x85, 0x89, 0x8e,
-        0x94, 0x82, 0x86, 0x8a, 0x8f, 0x93
+        0x80, 0x81, 0x82, 0x83, 0x84,
+        0x85, 0x86, 0x87, 0x88, 0x89,
+        0x8a, 0x8b, 0x8c, 0x8d, 0x00,
+        0x8e, 0x8f, 0x90, 0x91, 0x00,
+        0x00, 0x92, 0x93, 0x94, 0x00,
 };
 
 enum connection_state_t connection_state = NOT_CONNECTED;
@@ -565,9 +568,9 @@ void main(void) {
 	puts("     & ViWalls");
 	
     // Load Mew tiles starting at position 128.
-    set_bkg_data(128, 20, mew_tiles);
+    set_bkg_data(128, 21, mew_tiles);
     // Draw Mew figure in the middle of the screen (more or less).
-    set_bkg_tiles(7, 7, 5, 5, mew_map);
+    set_bkg_tiles(7, 6, 5, 5, mew_map);
 
     disable_interrupts();
 
