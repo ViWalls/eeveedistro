@@ -23,7 +23,7 @@
 #define SER_OPT_REG_DIR (*(uint8_t *)0xFF02)
 
 // Eevee image.
-const unsigned char mew_tiles[] = {
+const unsigned char eevee_tiles[] = {
         0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
 		0x00, 0x00, 0x00, 0x00, 0x1c, 0x1c, 0x1a, 0x12, 0x11, 0x19, 0x1d, 0x18, 0x1b, 0x1c, 0x0f, 0x1c,
 		0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x80, 0x80, 0xc0, 0x40, 0xa0, 0x60,
@@ -47,9 +47,9 @@ const unsigned char mew_tiles[] = {
 		0x20, 0xe0, 0x20, 0xe0, 0x40, 0xc0, 0x80, 0x80, 0x00, 0x80, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 };
 
-// It has +128 since we are loading Mew sprites starting at position 128
+// It has +128 since we are loading Eevee sprites starting at position 128
 // to prevent collisions with the font sprites.
-const unsigned char mew_map[] = {
+const unsigned char eevee_map[] = {
         0x80, 0x81, 0x82, 0x83, 0x84,
         0x85, 0x86, 0x87, 0x88, 0x89,
         0x8a, 0x8b, 0x8c, 0x8d, 0x00,
@@ -294,7 +294,7 @@ void fill_pokemon_team(void) {
     struct SelectedPokemon *pSelectedPokemon = &traderPacket.selected_pokemon;
     pSelectedPokemon->number = 6;
     for (size_t i = 0; i < 6; i++) {
-        pSelectedPokemon->pokemon[i] = MEW;
+        pSelectedPokemon->pokemon[i] = EEVEE;
     }
 
     for (size_t i = 0; i < 6; i++) {
@@ -567,10 +567,10 @@ void main(void) {
     puts("    2026 Grender");
 	puts("     & ViWalls");
 	
-    // Load Mew tiles starting at position 128.
-    set_bkg_data(128, 21, mew_tiles);
-    // Draw Mew figure in the middle of the screen (more or less).
-    set_bkg_tiles(7, 6, 5, 5, mew_map);
+    // Load Eevee tiles starting at position 128.
+    set_bkg_data(128, 21, eevee_tiles);
+    // Draw Eevee figure in the middle of the screen (more or less).
+    set_bkg_tiles(7, 6, 5, 5, eevee_map);
 
     disable_interrupts();
 
