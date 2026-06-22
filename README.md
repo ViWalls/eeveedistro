@@ -2,7 +2,7 @@
 
 ![1](https://github.com/ViWalls/eeveedistro/blob/master/scrnshot/bgb00109.png)![2](https://github.com/ViWalls/eeveedistro/blob/master/scrnshot/bgb00110.png)![3](https://github.com/ViWalls/eeveedistro/blob/master/scrnshot/bgb00111.png)
 
-Eeveedistro is a small custom ROM designed for transferring Pokémon to Gen 1 and 2 (through time capsule) Pokémon games. At this moment, it's capable of transferring a PCNY Growth Eevee with perfect DVs.
+Eeveedistro is a small custom ROM designed for transferring Pokémon to Gen 1 and 2 (through time capsule) Pokémon games. At this moment, it's capable of transferring a PCNY style Growth Eevee with perfect DVs.
 
 This project can be easily modified to transfer any Pokémon.
 
