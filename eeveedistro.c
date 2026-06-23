@@ -312,7 +312,7 @@ void fill_pokemon_team(void) {
         pPartyMember->move2 = TAIL_WHIP;
         pPartyMember->move3 = GROWTH;
         pPartyMember->move4 = 0x0;
-        pPartyMember->original_trainer_id = (randw() % 65535) + 1;
+        pPartyMember->original_trainer_id = (randw() % 65535) + 4846;
 
         pPartyMember->experience = 125;
 
